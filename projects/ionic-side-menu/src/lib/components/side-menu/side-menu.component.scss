@@ -1,0 +1,47 @@
+.side-menu-container {
+  .side-menu-header {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 160px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.13);
+    padding: 16px;
+    .profile {
+      .picture {
+        height: 64px;
+        width: 64px;
+        img {
+          border-radius: 50%;
+        }
+      }
+      .name,
+      .email {
+        margin: 0;
+        font-size: 14px;
+        line-height: 24px;
+        color: #fff;
+      }
+      .name {
+        margin-top: 16px;
+        font-weight: 500;
+      }
+      .email {
+        font-weight: 400;
+      }
+    }
+  }
+  ion-list-header {
+    margin-top: -8px;
+  }
+  .active {
+    --background: var(--border-color);
+    ion-icon,
+    ion-label {
+      color: var(--ion-color-primary);
+    }
+  }
+  .divider {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.13);
+  }
+}

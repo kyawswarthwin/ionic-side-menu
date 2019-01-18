@@ -16,6 +16,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ionic-side-menu": [
+        "dist/ionic-side-menu"
+      ],
+      "ionic-side-menu/*": [
+        "dist/ionic-side-menu/*"
+      ]
+    }
   }
 }
