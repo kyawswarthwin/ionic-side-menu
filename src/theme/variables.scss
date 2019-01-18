@@ -75,3 +75,15 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 }
+
+:root {
+  --ion-headings-font-weight: 300;
+}
+
+.md {
+  --ion-toolbar-background: var(--ion-color-primary);
+  --ion-toolbar-color: #fff;
+  --ion-toolbar-color-activated: #fff;
+  --ion-toolbar-color-checked: #fff;
+  --ion-toolbar-color-unchecked: rgba(255, 255, 255, 0.6);
+}
