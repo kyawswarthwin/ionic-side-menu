@@ -4,7 +4,9 @@
 
 ## Installation
 
+```sh
 npm i ionic-side-menu
+```
 
 ## Example
 
