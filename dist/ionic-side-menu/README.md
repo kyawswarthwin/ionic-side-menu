@@ -2,13 +2,7 @@
 
 ![Screenshot](https://raw.githubusercontent.com/kyawswarthwin/ionic-side-menu/master/docs/img01.png)
 
-## Installation
-
-```sh
-npm i ionic-side-menu
-```
-
-## Example
+## Demo Application
 
 ```sh
 git clone https://github.com/kyawswarthwin/ionic-side-menu.git
