@@ -1,6 +1,6 @@
 # Ionic 4 Side Menu
 
-![Screenshot](https://raw.githubusercontent.com/kyawswarthwin/ionic-side-menu/master/docs/img01.png)
+![Screenshot](https://raw.githubusercontent.com/kyawswarthwin/ionic-side-menu/master/doc/assets/img01.gif)
 
 ## Demo Application
 
