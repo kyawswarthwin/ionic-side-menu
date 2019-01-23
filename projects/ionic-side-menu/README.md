@@ -5,8 +5,8 @@
 ## Demo Application
 
 ```sh
-git clone https://github.com/kyawswarthwin/ionic-side-menu.git
-cd ionic-side-menu
-npm install
-ionic serve
+$ git clone https://github.com/kyawswarthwin/ionic-side-menu.git
+$ cd ionic-side-menu
+$ npm install
+$ ionic serve
 ```
