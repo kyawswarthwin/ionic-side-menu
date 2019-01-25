@@ -1,7 +1,9 @@
 .header {
+  background: var(--ion-side-menu-header-background, var(--ion-text-color, #000));
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  color: var(--ion-side-menu-header-color, var(--ion-background-color, #fff));
   height: 160px;
   margin-bottom: 8px;
   border-bottom: 1px solid
@@ -23,7 +25,6 @@
       margin: 0;
       font-size: 14px;
       line-height: 24px;
-      color: var(--ion-color-primary-contrast, #fff);
     }
     .name {
       margin-top: 16px;
@@ -34,24 +35,27 @@
     }
   }
 }
-ion-list-header {
-  margin-top: -8px;
-  color: var(--ion-color-step-400, #999);
-}
-ion-item {
-  color: var(--ion-color-step-600, #666);
-}
-.active {
-  --background: var(--border-color);
-  ion-icon,
-  ion-label {
-    color: var(--ion-color-primary, #3880ff);
+
+.content {
+  ion-list-header {
+    margin-top: -8px;
+    color: var(--ion-color-step-400, #999);
   }
-}
-.divider {
-  border-bottom: 1px solid
-    var(
-      --ion-item-border-color,
-      var(--ion-border-color, var(--ion-color-step-150, rgba(0, 0, 0, 0.13)))
-    );
+  ion-item {
+    color: var(--ion-color-step-600, #666);
+  }
+  .active {
+    --background: var(--border-color);
+    ion-icon,
+    ion-label {
+      color: var(--ion-color-primary, #3880ff);
+    }
+  }
+  .divider {
+    border-bottom: 1px solid
+      var(
+        --ion-item-border-color,
+        var(--ion-border-color, var(--ion-color-step-150, rgba(0, 0, 0, 0.13)))
+      );
+  }
 }

@@ -10,7 +10,8 @@
       options.header.profile.email }}</p>
   </div>
 </div>
-<ion-list lines="none" no-padding *ngFor="let menu of options.menus">
+<ion-list lines="none" no-padding class="content" *ngFor="let menu of
+  options.menus">
   <ion-list-header *ngIf="menu.header">{{ menu.header }}</ion-list-header>
   <ion-menu-toggle auto-hide="false" *ngFor="let item of menu.items">
     <ion-item [routerLink]="item.path && item.path"
