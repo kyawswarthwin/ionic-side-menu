@@ -80,10 +80,10 @@
   --ion-headings-font-weight: 300;
 
   --ion-toolbar-background: var(--ion-color-primary);
-  --ion-toolbar-color: var(--ion-color-primary-contrast);
-  --ion-toolbar-color-activated: var(--ion-color-primary-contrast);
-  --ion-toolbar-color-unchecked: rgba(var(--ion-color-primary-contrast-rgb), 0.6);
-  --ion-toolbar-color-checked: var(--ion-color-primary-contrast);
+  --ion-toolbar-color: #fff;
+  --ion-toolbar-color-activated: #fff;
+  --ion-toolbar-color-unchecked: rgba(255, 255, 255, 0.6);
+  --ion-toolbar-color-checked: #fff;
 
   --ion-side-menu-header-color: #fff;
 }
