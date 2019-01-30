@@ -1,13 +1,16 @@
 {
   "name": "ionic-side-menu",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Ionic 4 Side Menu",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kyawswarthwin/ionic-side-menu.git"
   },
   "keywords": [
-    "ionic"
+    "ionic",
+    "side menu",
+    "material",
+    "material design"
   ],
   "author": "Kyaw Swar Thwin",
   "license": "MIT",
