@@ -14,9 +14,10 @@
   options.menus">
   <ion-list-header *ngIf="menu.header">{{ menu.header }}</ion-list-header>
   <ion-menu-toggle auto-hide="false" *ngFor="let item of menu.items">
-    <ion-item [routerLink]="item.path && item.path"
-      [routerLinkActive]="item.path && 'active'" [routerDirection]="item.path &&
-      'root'" (click)="item.onClick && item.onClick()">
+    <ion-item [routerLink]="item.path ? item.path : []"
+      [routerLinkActive]="item.path ? 'active' : []"
+      [routerDirection]="item.path && 'root'" (click)="item.onClick &&
+      item.onClick()">
       <ion-icon *ngIf="item.icon" slot="start" [name]="item.icon"></ion-icon>
       <ion-label>{{ item.title }}</ion-label>
       <ion-badge *ngIf="item.badge" slot="end" [color]="item.badgeColor &&
