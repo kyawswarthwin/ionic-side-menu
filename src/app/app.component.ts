@@ -19,10 +19,7 @@ export class AppComponent {
         picture: 'assets/img/avatar.png',
         name: 'John Doe',
         email: 'johndoe@gmail.com'
-      }),
-      handler: () => {
-        alert('header clicked');
-      }
+      })
     },
     menus: [
       {

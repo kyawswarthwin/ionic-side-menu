@@ -6,7 +6,6 @@ export interface SideMenuOptions {
 export interface SideMenuHeader {
     background?: string;
     profile?: Observable<SideMenuProfile>;
-    handler?: () => void;
 }
 export interface SideMenuProfile {
     picture: string;
