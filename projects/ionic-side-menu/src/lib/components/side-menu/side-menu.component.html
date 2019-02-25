@@ -1,13 +1,12 @@
 <div *ngIf="options.header as header" class="header" [ngStyle]="header.background
-  && {'background-image': 'url(' + header.background + ')'}"
-  (click)="header.handler && header.handler()">
+  && {'background-image': 'url(' + header.background + ')'}">
   <div *ngIf="(header.profile | async) as profile" class="profile">
     <img class="picture" [src]="profile.picture">
     <h2 class="name">{{ profile.name }}</h2>
     <p *ngIf="profile.email" class="email">{{ profile.email }}</p>
   </div>
 </div>
-<ion-list lines="none" no-padding class="content" *ngFor="let menu of
+<ion-list class="content" lines="none" no-padding *ngFor="let menu of
   options.menus">
   <ng-container *ngIf="menu.can ? (menu.can() | async) : true">
     <ion-list-header *ngIf="menu.header">{{ menu.header }}</ion-list-header>
