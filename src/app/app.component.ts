@@ -41,7 +41,7 @@ export class AppComponent {
         ]
       },
       {
-        isDivider: true
+        divider: true
       },
       {
         header: 'Account',

@@ -15,7 +15,7 @@ export interface SideMenuProfile {
 export interface SideMenu {
     header?: string;
     items?: SideMenuItem[];
-    isDivider?: boolean;
+    divider?: boolean;
 }
 export interface SideMenuItem {
     icon?: string;
