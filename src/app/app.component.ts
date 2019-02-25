@@ -4,6 +4,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { SideMenuOptions } from 'ionic-side-menu';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -11,14 +12,15 @@ import { SideMenuOptions } from 'ionic-side-menu';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  authState: BehaviorSubject<any> = new BehaviorSubject({
+    picture: 'assets/img/avatar.png',
+    name: 'John Doe',
+    email: 'johndoe@gmail.com'
+  });
   options: SideMenuOptions = {
     header: {
       background: 'assets/img/side-menu-bg.jpg',
-      profile: {
-        picture: 'assets/img/avatar.png',
-        name: 'John Doe',
-        email: 'johndoe@gmail.com'
-      },
+      profile: this.authState.asObservable(),
       handler: () => {
         alert('header clicked');
       }

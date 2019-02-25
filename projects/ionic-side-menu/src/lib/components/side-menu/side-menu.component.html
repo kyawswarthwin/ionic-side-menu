@@ -1,7 +1,7 @@
 <div *ngIf="options.header as header" class="header" [ngStyle]="header.background
   && {'background-image': 'url(' + header.background + ')'}"
   (click)="header.handler && header.handler()">
-  <div *ngIf="header.profile as profile" class="profile">
+  <div *ngIf="(header.profile | async) as profile" class="profile">
     <div class="picture">
       <img [src]="profile.picture">
     </div>

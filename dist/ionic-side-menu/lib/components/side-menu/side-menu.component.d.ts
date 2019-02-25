@@ -1,10 +1,11 @@
+import { Observable } from 'rxjs';
 export interface SideMenuOptions {
     header?: SideMenuHeader;
     menus: SideMenu[];
 }
 export interface SideMenuHeader {
     background?: string;
-    profile?: SideMenuProfile;
+    profile?: Observable<SideMenuProfile>;
     handler?: () => void;
 }
 export interface SideMenuProfile {
