@@ -18,6 +18,7 @@ export interface SideMenu {
   header?: string;
   items?: SideMenuItem[];
   divider?: boolean;
+  can?: () => Observable<boolean>;
 }
 export interface SideMenuItem {
   icon?: string;
@@ -25,6 +26,7 @@ export interface SideMenuItem {
   badge?: Observable<SideMenuBadge>;
   path?: string;
   handler?: () => void;
+  can?: () => Observable<boolean>;
 }
 export interface SideMenuBadge {
   text: string;
