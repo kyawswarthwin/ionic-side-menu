@@ -23,10 +23,13 @@ export interface SideMenu {
 export interface SideMenuItem {
   icon?: string;
   title: string;
-  badge?: string;
-  badgeColor?: string;
+  badge?: Observable<SideMenuBadge>;
   path?: string;
   handler?: () => void;
+}
+export interface SideMenuBadge {
+  text: string;
+  color?: string;
 }
 
 @Component({
