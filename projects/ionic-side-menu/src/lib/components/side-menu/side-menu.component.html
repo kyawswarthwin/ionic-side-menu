@@ -6,8 +6,7 @@
       <img [src]="header.profile.picture">
     </div>
     <h2 class="name">{{ header.profile.name }}</h2>
-    <p *ngIf="header.profile.email" class="email">{{
-      header.profile.email }}</p>
+    <p *ngIf="header.profile.email" class="email">{{ header.profile.email }}</p>
   </div>
 </div>
 <ion-list lines="none" no-padding class="content" *ngFor="let menu of
