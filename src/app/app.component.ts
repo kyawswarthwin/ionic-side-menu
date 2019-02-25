@@ -19,7 +19,7 @@ export class AppComponent {
         name: 'John Doe',
         email: 'johndoe@gmail.com'
       },
-      onClick: () => {
+      handler: () => {
         alert('header clicked');
       }
     },
@@ -49,7 +49,7 @@ export class AppComponent {
           {
             icon: 'exit',
             title: 'Logout',
-            onClick: () => {
+            handler: () => {
               alert('logout clicked');
             }
           }

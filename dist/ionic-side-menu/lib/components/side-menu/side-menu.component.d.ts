@@ -5,7 +5,7 @@ export interface SideMenuOptions {
 export interface SideMenuHeader {
     background?: string;
     profile?: SideMenuProfile;
-    onClick?: Function;
+    handler?: () => void;
 }
 export interface SideMenuProfile {
     picture: string;
@@ -23,7 +23,7 @@ export interface SideMenuItem {
     badge?: string;
     badgeColor?: string;
     path?: string;
-    onClick?: Function;
+    handler?: () => void;
 }
 export declare class SideMenuComponent {
     options: SideMenuOptions;

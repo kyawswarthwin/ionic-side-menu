@@ -1,13 +1,13 @@
-<div *ngIf="options.header" class="header" [ngStyle]="options.header.background
-  && {'background-image': 'url(' + options.header.background + ')'}"
-  (click)="options.header.onClick && options.header.onClick()">
-  <div *ngIf="options.header.profile" class="profile">
+<div *ngIf="options.header as header" class="header" [ngStyle]="header.background
+  && {'background-image': 'url(' + header.background + ')'}"
+  (click)="header.handler && header.handler()">
+  <div *ngIf="header.profile" class="profile">
     <div class="picture">
-      <img [src]="options.header.profile.picture">
+      <img [src]="header.profile.picture">
     </div>
-    <h2 class="name">{{ options.header.profile.name }}</h2>
-    <p *ngIf="options.header.profile.email" class="email">{{
-      options.header.profile.email }}</p>
+    <h2 class="name">{{ header.profile.name }}</h2>
+    <p *ngIf="header.profile.email" class="email">{{
+      header.profile.email }}</p>
   </div>
 </div>
 <ion-list lines="none" no-padding class="content" *ngFor="let menu of
@@ -16,8 +16,8 @@
   <ion-menu-toggle auto-hide="false" *ngFor="let item of menu.items">
     <ion-item [routerLink]="item.path ? item.path : []"
       [routerLinkActive]="item.path ? 'active' : []"
-      [routerDirection]="item.path && 'root'" (click)="item.onClick &&
-      item.onClick()">
+      [routerDirection]="item.path && 'root'" (click)="item.handler &&
+      item.handler()">
       <ion-icon *ngIf="item.icon" slot="start" [name]="item.icon"></ion-icon>
       <ion-label>{{ item.title }}</ion-label>
       <ion-badge *ngIf="item.badge" slot="end" [color]="item.badgeColor &&
