@@ -10,17 +10,9 @@
   options.menus">
   <ng-container *ngIf="menu.can ? (menu.can() | async) : true">
     <ion-list-header *ngIf="menu.header">{{ menu.header }}</ion-list-header>
-    <ion-menu-toggle auto-hide="false" *ngFor="let item of menu.items">
-      <ion-item *ngIf="item.can ? (item.can() | async) : true"
-        [routerLink]="item.path ? item.path : []" [routerLinkActive]="item.path
-        ? 'active' : []" [routerDirection]="item.path && 'root'"
-        (click)="item.handler && item.handler()">
-        <ion-icon *ngIf="item.icon" slot="start" [name]="item.icon"></ion-icon>
-        <ion-label>{{ item.title }}</ion-label>
-        <ion-badge *ngIf="(item.badge | async) as badge" slot="end"
-          [color]="badge.color && badge.color">{{ badge.text }}</ion-badge>
-      </ion-item>
-    </ion-menu-toggle>
+    <ng-container *ngFor="let item of menu.items">
+      <ion-side-menu-item [item]="item"></ion-side-menu-item>
+    </ng-container>
     <hr *ngIf="menu.divider" class="divider">
   </ng-container>
 </ion-list>

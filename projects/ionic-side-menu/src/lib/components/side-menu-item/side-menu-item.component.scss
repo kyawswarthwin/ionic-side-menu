@@ -1,0 +1,10 @@
+ion-item {
+  color: var(--ion-color-step-600, #666);
+}
+.active {
+  --background: var(--border-color);
+  ion-icon,
+  ion-label {
+    color: var(--ion-color-primary, #3880ff);
+  }
+}
