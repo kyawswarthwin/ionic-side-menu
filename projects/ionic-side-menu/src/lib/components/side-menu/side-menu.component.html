@@ -6,8 +6,8 @@
     <p *ngIf="profile.email" class="email">{{ profile.email }}</p>
   </div>
 </div>
-<ion-list class="content" lines="none" no-padding *ngFor="let menu of
-  options.menus">
+<ion-list *ngFor="let menu of options.menus" class="content" lines="none"
+  no-padding>
   <ng-container *ngIf="menu.can ? (menu.can() | async) : true">
     <ion-list-header *ngIf="menu.header">{{ menu.header }}</ion-list-header>
     <ng-container *ngFor="let item of menu.items">

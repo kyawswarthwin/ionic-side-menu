@@ -11,7 +11,7 @@
   </ion-item>
   <ng-container *ngIf="expanded">
     <ion-side-menu-item *ngFor="let item of item.children" [item]="item"
-      [depth]="depth+1"></ion-side-menu-item>
+      [depth]="depth + 1"></ion-side-menu-item>
   </ng-container>
 </ng-template>
 <ng-template #elseBlock>
