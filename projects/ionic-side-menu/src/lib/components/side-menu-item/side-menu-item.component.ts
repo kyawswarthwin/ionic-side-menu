@@ -18,7 +18,7 @@ export class SideMenuItemComponent {
   constructor(public sanitizer: DomSanitizer, private router: Router) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        if (event.urlAfterRedirects.startsWith(this.item.path)) {
+        if (event.urlAfterRedirects.startsWith(this.item.url)) {
           this.expanded = true;
         }
       }

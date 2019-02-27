@@ -27,7 +27,7 @@ export class AppComponent {
           {
             icon: 'home',
             title: 'Home',
-            path: '/home'
+            url: '/home'
           },
           {
             icon: 'list',
@@ -36,24 +36,24 @@ export class AppComponent {
               text: '2',
               color: 'danger'
             }),
-            path: '/frameworks',
+            url: '/frameworks',
             children: [
               {
                 icon: 'logo-ionic',
                 title: 'Ionic',
-                path: '/frameworks/ionic'
+                url: '/frameworks/ionic'
               },
               {
                 icon: 'logo-angular',
                 title: 'Angular',
-                path: '/frameworks/angular'
+                url: '/frameworks/angular'
               }
             ]
           },
           {
             icon: 'information-circle',
             title: 'About',
-            path: '/about'
+            url: '/about'
           }
         ]
       },

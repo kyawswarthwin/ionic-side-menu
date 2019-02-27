@@ -18,8 +18,8 @@
 <ng-template #elseBlock>
   <ion-menu-toggle auto-hide="false">
     <ion-item *ngIf="item.can ? (item.can() | async) : true"
-      [routerLink]="item.path ? item.path : []" [routerLinkActive]="item.path ?
-      'active' : []" [routerDirection]="item.path && 'root'"
+      [routerLink]="item.url ? item.url : []" [routerLinkActive]="item.url ?
+      'active' : []" [routerDirection]="item.url && 'root'"
       [style]="sanitizer.bypassSecurityTrustStyle('--padding-start: ' + (depth +
       1) * 16 + 'px')" (click)="item.handler && item.handler()">
       <ion-icon *ngIf="item.icon" slot="start" [name]="item.icon"></ion-icon>
