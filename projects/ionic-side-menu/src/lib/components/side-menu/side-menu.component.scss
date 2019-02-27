@@ -12,6 +12,7 @@
       var(--ion-border-color, var(--ion-color-step-150, rgba(0, 0, 0, 0.13)))
     );
   padding: 16px;
+  user-select: none;
   .profile {
     .picture {
       width: 64px;
