@@ -10,9 +10,7 @@
   no-padding>
   <ng-container *ngIf="menu.can ? (menu.can() | async) : true">
     <ion-list-header *ngIf="menu.header">{{ menu.header }}</ion-list-header>
-    <ng-container *ngFor="let item of menu.items">
-      <ion-side-menu-item [item]="item"></ion-side-menu-item>
-    </ng-container>
+    <ion-side-menu-item *ngFor="let item of menu.items" [item]="item"></ion-side-menu-item>
     <hr *ngIf="menu.divider" class="divider">
   </ng-container>
 </ion-list>
