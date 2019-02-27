@@ -1,8 +1,9 @@
 <div *ngIf="item.children && item.children.length; then thenBlock else
   elseBlock"></div>
 <ng-template #thenBlock>
-  <ion-item button [style]="sanitizer.bypassSecurityTrustStyle('--padding-start:
-    ' + (depth + 1) * 16 + 'px')" (click)="expanded=!expanded">
+  <ion-item button detail="false"
+    [style]="sanitizer.bypassSecurityTrustStyle('--padding-start: ' + (depth +
+    1) * 16 + 'px')" (click)="expanded=!expanded">
     <ion-icon *ngIf="item.icon" slot="start" [name]="item.icon"></ion-icon>
     <ion-label>{{ item.title }}</ion-label>
     <ion-badge *ngIf="(item.badge | async) as badge" slot="end"
