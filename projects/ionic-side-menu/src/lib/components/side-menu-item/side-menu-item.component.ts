@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { SideMenuItem } from '../side-menu/side-menu.component';
 
@@ -13,5 +14,5 @@ export class SideMenuItemComponent {
 
   expanded: boolean;
 
-  constructor() {}
+  constructor(public sanitizer: DomSanitizer) {}
 }
