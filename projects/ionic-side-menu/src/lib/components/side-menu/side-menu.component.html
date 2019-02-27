@@ -6,6 +6,7 @@
     <p *ngIf="profile.email" class="email">{{ profile.email }}</p>
   </div>
 </div>
+
 <ion-list *ngFor="let menu of options.menus" class="content" lines="none"
   no-padding>
   <ng-container *ngIf="menu.can ? (menu.can() | async) : true">
