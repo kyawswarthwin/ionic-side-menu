@@ -24,8 +24,8 @@ export interface SideMenuItem {
   icon?: string;
   title: string;
   badge?: Observable<SideMenuBadge>;
-  children?: SideMenuItem[];
   path?: string;
+  children?: SideMenuItem[];
   handler?: () => void;
   can?: () => Observable<boolean>;
 }

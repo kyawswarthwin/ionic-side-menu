@@ -36,16 +36,17 @@ export class AppComponent {
               text: '2',
               color: 'danger'
             }),
+            path: '/frameworks',
             children: [
               {
                 icon: 'logo-ionic',
                 title: 'Ionic',
-                path: '/ionic'
+                path: '/frameworks/ionic'
               },
               {
                 icon: 'logo-angular',
                 title: 'Angular',
-                path: '/angular'
+                path: '/frameworks/angular'
               }
             ]
           },

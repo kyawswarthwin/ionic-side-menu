@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router, NavigationEnd } from '@angular/router';
 
 import { SideMenuItem } from '../side-menu/side-menu.component';
 
@@ -14,5 +15,13 @@ export class SideMenuItemComponent {
 
   expanded: boolean;
 
-  constructor(public sanitizer: DomSanitizer) {}
+  constructor(public sanitizer: DomSanitizer, private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        if (event.urlAfterRedirects.startsWith(this.item.path)) {
+          this.expanded = true;
+        }
+      }
+    });
+  }
 }

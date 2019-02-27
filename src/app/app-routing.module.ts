@@ -7,12 +7,17 @@ const routes: Routes = [
     loadChildren: './pages/home/home.module#HomePageModule'
   },
   {
-    path: 'ionic',
-    loadChildren: './pages/ionic/ionic.module#IonicPageModule'
-  },
-  {
-    path: 'angular',
-    loadChildren: './pages/angular/angular.module#AngularPageModule'
+    path: 'frameworks',
+    children: [
+      {
+        path: 'ionic',
+        loadChildren: './pages/ionic/ionic.module#IonicPageModule'
+      },
+      {
+        path: 'angular',
+        loadChildren: './pages/angular/angular.module#AngularPageModule'
+      }
+    ]
   },
   {
     path: 'about',
