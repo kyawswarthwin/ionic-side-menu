@@ -1,11 +1,30 @@
-<ion-menu-toggle auto-hide="false">
-  <ion-item *ngIf="item.can ? (item.can() | async) : true"
-    [routerLink]="item.path ? item.path : []" [routerLinkActive]="item.path ?
-    'active' : []" [routerDirection]="item.path && 'root'" (click)="item.handler
-    && item.handler()">
+<div *ngIf="item.children && item.children.length; then thenBlock else
+  elseBlock"></div>
+<ng-template #thenBlock>
+  <ion-item button [ngStyle]="{'--padding-start': (depth * 12) + 'px'}"
+    (click)="expanded=!expanded">
     <ion-icon *ngIf="item.icon" slot="start" [name]="item.icon"></ion-icon>
     <ion-label>{{ item.title }}</ion-label>
     <ion-badge *ngIf="(item.badge | async) as badge" slot="end"
       [color]="badge.color && badge.color">{{ badge.text }}</ion-badge>
+    <ion-icon slot="end" [name]="expanded ? 'arrow-dropup' : 'arrow-dropdown'"></ion-icon>
   </ion-item>
-</ion-menu-toggle>
+  <ng-container *ngIf="expanded">
+    <ion-side-menu-item *ngFor="let item of item.children" [item]="item"
+      [depth]="depth+1"></ion-side-menu-item>
+  </ng-container>
+</ng-template>
+<ng-template #elseBlock>
+  <ion-menu-toggle auto-hide="false">
+    <ion-item *ngIf="item.can ? (item.can() | async) : true"
+      [routerLink]="item.path ? item.path : []" [routerLinkActive]="item.path ?
+      'active' : []" [routerDirection]="item.path && 'root'"
+      [ngStyle]="{'--padding-start': (depth * 12) + 'px'}" (click)="item.handler
+      && item.handler()">
+      <ion-icon *ngIf="item.icon" slot="start" [name]="item.icon"></ion-icon>
+      <ion-label>{{ item.title }}</ion-label>
+      <ion-badge *ngIf="(item.badge | async) as badge" slot="end"
+        [color]="badge.color && badge.color">{{ badge.text }}</ion-badge>
+    </ion-item>
+  </ion-menu-toggle>
+</ng-template>

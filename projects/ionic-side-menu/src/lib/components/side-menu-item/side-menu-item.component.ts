@@ -9,6 +9,9 @@ import { SideMenuItem } from '../side-menu/side-menu.component';
 })
 export class SideMenuItemComponent {
   @Input() item: SideMenuItem;
+  @Input() depth: number = 0;
+
+  expanded: boolean;
 
   constructor() {}
 }

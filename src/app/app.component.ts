@@ -27,11 +27,27 @@ export class AppComponent {
           {
             icon: 'home',
             title: 'Home',
+            path: '/home'
+          },
+          {
+            icon: 'list',
+            title: 'Frameworks',
             badge: of({
-              text: '3',
+              text: '2',
               color: 'danger'
             }),
-            path: '/home'
+            children: [
+              {
+                icon: 'logo-ionic',
+                title: 'Ionic',
+                path: '/ionic'
+              },
+              {
+                icon: 'logo-angular',
+                title: 'Angular',
+                path: '/angular'
+              }
+            ]
           },
           {
             icon: 'information-circle',
