@@ -5,7 +5,7 @@
     [style]="sanitizer.bypassSecurityTrustStyle('--padding-start: ' + (depth +
     1) * 16 + 'px')" (click)="expanded=!expanded">
     <ion-icon *ngIf="item.icon" slot="start" [name]="item.icon"></ion-icon>
-    <ion-label>{{ item.title }}</ion-label>
+    <ion-label>{{ item.label }}</ion-label>
     <ion-badge *ngIf="(item.badge | async) as badge" slot="end"
       [color]="badge.color && badge.color">{{ badge.text }}</ion-badge>
     <ion-icon slot="end" [name]="expanded ? 'arrow-dropup' : 'arrow-dropdown'"></ion-icon>
@@ -23,7 +23,7 @@
       [style]="sanitizer.bypassSecurityTrustStyle('--padding-start: ' + (depth +
       1) * 16 + 'px')" (click)="item.handler && item.handler()">
       <ion-icon *ngIf="item.icon" slot="start" [name]="item.icon"></ion-icon>
-      <ion-label>{{ item.title }}</ion-label>
+      <ion-label>{{ item.label }}</ion-label>
       <ion-badge *ngIf="(item.badge | async) as badge" slot="end"
         [color]="badge.color && badge.color">{{ badge.text }}</ion-badge>
     </ion-item>

@@ -22,7 +22,7 @@ export interface SideMenu {
 }
 export interface SideMenuItem {
   icon?: string;
-  title: string;
+  label: string;
   badge?: Observable<SideMenuBadge>;
   url?: string;
   children?: SideMenuItem[];

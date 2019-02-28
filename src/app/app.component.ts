@@ -26,12 +26,12 @@ export class AppComponent {
         items: [
           {
             icon: 'home',
-            title: 'Home',
+            label: 'Home',
             url: '/home'
           },
           {
             icon: 'list',
-            title: 'Frameworks',
+            label: 'Frameworks',
             badge: of({
               text: '2',
               color: 'danger'
@@ -40,19 +40,19 @@ export class AppComponent {
             children: [
               {
                 icon: 'logo-ionic',
-                title: 'Ionic',
+                label: 'Ionic',
                 url: '/frameworks/ionic'
               },
               {
                 icon: 'logo-angular',
-                title: 'Angular',
+                label: 'Angular',
                 url: '/frameworks/angular'
               }
             ]
           },
           {
             icon: 'information-circle',
-            title: 'About',
+            label: 'About',
             url: '/about'
           }
         ]
@@ -65,7 +65,7 @@ export class AppComponent {
         items: [
           {
             icon: 'exit',
-            title: 'Logout',
+            label: 'Logout',
             handler: () => {
               alert('logout clicked');
             }
