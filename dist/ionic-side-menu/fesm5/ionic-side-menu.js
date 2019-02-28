@@ -11,6 +11,13 @@ import { Router, NavigationEnd, RouterModule } from '@angular/router';
 var SideMenuComponent = /** @class */ (function () {
     function SideMenuComponent() {
     }
+    /**
+     * @return {?}
+     */
+    SideMenuComponent.prototype.ngOnInit = /**
+     * @return {?}
+     */
+    function () { };
     SideMenuComponent.decorators = [
         { type: Component, args: [{
                     selector: 'ion-side-menu',
@@ -32,10 +39,18 @@ var SideMenuComponent = /** @class */ (function () {
  */
 var SideMenuItemComponent = /** @class */ (function () {
     function SideMenuItemComponent(sanitizer, router) {
-        var _this = this;
         this.sanitizer = sanitizer;
         this.router = router;
         this.depth = 0;
+    }
+    /**
+     * @return {?}
+     */
+    SideMenuItemComponent.prototype.ngOnInit = /**
+     * @return {?}
+     */
+    function () {
+        var _this = this;
         this.router.events.subscribe(function (event) {
             if (event instanceof NavigationEnd) {
                 if (event.urlAfterRedirects.startsWith(_this.item.url)) {
@@ -43,7 +58,7 @@ var SideMenuItemComponent = /** @class */ (function () {
                 }
             }
         });
-    }
+    };
     SideMenuItemComponent.decorators = [
         { type: Component, args: [{
                     selector: 'ion-side-menu-item',

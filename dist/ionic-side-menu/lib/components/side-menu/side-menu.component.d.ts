@@ -1,3 +1,4 @@
+import { OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 export interface SideMenuOptions {
     header?: SideMenuHeader;
@@ -31,7 +32,8 @@ export interface SideMenuBadge {
     text: string;
     color?: string;
 }
-export declare class SideMenuComponent {
+export declare class SideMenuComponent implements OnInit {
     options: SideMenuOptions;
     constructor();
+    ngOnInit(): void;
 }

@@ -11,6 +11,13 @@
     var SideMenuComponent = /** @class */ (function () {
         function SideMenuComponent() {
         }
+        /**
+         * @return {?}
+         */
+        SideMenuComponent.prototype.ngOnInit = /**
+         * @return {?}
+         */
+            function () { };
         SideMenuComponent.decorators = [
             { type: core.Component, args: [{
                         selector: 'ion-side-menu',
@@ -32,18 +39,26 @@
      */
     var SideMenuItemComponent = /** @class */ (function () {
         function SideMenuItemComponent(sanitizer, router$$1) {
-            var _this = this;
             this.sanitizer = sanitizer;
             this.router = router$$1;
             this.depth = 0;
-            this.router.events.subscribe(function (event) {
-                if (event instanceof router.NavigationEnd) {
-                    if (event.urlAfterRedirects.startsWith(_this.item.url)) {
-                        _this.expanded = true;
-                    }
-                }
-            });
         }
+        /**
+         * @return {?}
+         */
+        SideMenuItemComponent.prototype.ngOnInit = /**
+         * @return {?}
+         */
+            function () {
+                var _this = this;
+                this.router.events.subscribe(function (event) {
+                    if (event instanceof router.NavigationEnd) {
+                        if (event.urlAfterRedirects.startsWith(_this.item.url)) {
+                            _this.expanded = true;
+                        }
+                    }
+                });
+            };
         SideMenuItemComponent.decorators = [
             { type: core.Component, args: [{
                         selector: 'ion-side-menu-item',

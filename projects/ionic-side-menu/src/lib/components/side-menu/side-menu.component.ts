@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface SideMenuOptions {
@@ -39,8 +39,10 @@ export interface SideMenuBadge {
   templateUrl: './side-menu.component.html',
   styleUrls: ['./side-menu.component.scss']
 })
-export class SideMenuComponent {
+export class SideMenuComponent implements OnInit {
   @Input() options: SideMenuOptions;
 
   constructor() {}
+
+  ngOnInit() {}
 }

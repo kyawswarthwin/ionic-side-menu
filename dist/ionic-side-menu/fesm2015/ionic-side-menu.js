@@ -10,6 +10,10 @@ import { Router, NavigationEnd, RouterModule } from '@angular/router';
  */
 class SideMenuComponent {
     constructor() { }
+    /**
+     * @return {?}
+     */
+    ngOnInit() { }
 }
 SideMenuComponent.decorators = [
     { type: Component, args: [{
@@ -37,6 +41,11 @@ class SideMenuItemComponent {
         this.sanitizer = sanitizer;
         this.router = router;
         this.depth = 0;
+    }
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
         this.router.events.subscribe(event => {
             if (event instanceof NavigationEnd) {
                 if (event.urlAfterRedirects.startsWith(this.item.url)) {
