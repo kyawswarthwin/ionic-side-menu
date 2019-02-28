@@ -28,6 +28,7 @@ export interface SideMenuItem {
   children?: SideMenuItem[];
   handler?: () => void;
   can?: () => Observable<boolean>;
+  disabled?: boolean | Observable<boolean>;
 }
 export interface SideMenuBadge {
   text: string;

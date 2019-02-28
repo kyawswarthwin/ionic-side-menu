@@ -7,8 +7,8 @@
   </div>
 </div>
 
-<ion-list *ngFor="let menu of options.menus" class="content" lines="none"
-  no-padding>
+<ion-list *ngFor="let menu of options.menus" class="content" no-padding
+  lines="none">
   <ng-container *ngIf="menu.can ? (menu.can() | async) : true">
     <ion-list-header *ngIf="menu.header">{{ menu.header }}</ion-list-header>
     <ion-side-menu-item *ngFor="let item of menu.items" [item]="item"></ion-side-menu-item>

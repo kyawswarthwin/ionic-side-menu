@@ -1,9 +1,10 @@
 <div *ngIf="item.children && item.children.length; then thenBlock else
   elseBlock"></div>
 <ng-template #thenBlock>
-  <ion-item button detail="false"
-    [style]="sanitizer.bypassSecurityTrustStyle('--padding-start: ' + (depth +
-    1) * 16 + 'px')" (click)="expanded=!expanded">
+  <ion-item [disabled]="isObservable(item.disabled) ? (item.disabled | async) :
+    item.disabled" [style]="sanitizer.bypassSecurityTrustStyle('--padding-start:
+    ' + (depth + 1) * 16 + 'px')" button detail="false"
+    (click)="expanded=!expanded">
     <ion-icon *ngIf="item.icon" slot="start" [name]="item.icon"></ion-icon>
     <ion-label>{{ item.label }}</ion-label>
     <ion-badge *ngIf="(item.badge | async) as badge" slot="end"
@@ -18,10 +19,12 @@
 <ng-template #elseBlock>
   <ion-menu-toggle auto-hide="false">
     <ion-item *ngIf="item.can ? (item.can() | async) : true"
-      [routerLink]="item.url ? item.url : []" [routerLinkActive]="item.url ?
-      'active' : []" [routerDirection]="item.url && 'root'"
+      [disabled]="isObservable(item.disabled) ? (item.disabled | async) :
+      item.disabled"
       [style]="sanitizer.bypassSecurityTrustStyle('--padding-start: ' + (depth +
-      1) * 16 + 'px')" (click)="item.handler && item.handler()">
+      1) * 16 + 'px')" [routerLink]="item.url ? item.url : []"
+      [routerLinkActive]="item.url ? 'active' : []" [routerDirection]="item.url
+      && 'root'" (click)="item.handler && item.handler()">
       <ion-icon *ngIf="item.icon" slot="start" [name]="item.icon"></ion-icon>
       <ion-label>{{ item.label }}</ion-label>
       <ion-badge *ngIf="(item.badge | async) as badge" slot="end"

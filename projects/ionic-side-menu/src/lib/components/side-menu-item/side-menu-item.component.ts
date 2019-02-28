@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router, NavigationEnd } from '@angular/router';
+import { isObservable } from 'rxjs';
 
 import { SideMenuItem } from '../side-menu/side-menu.component';
 
@@ -13,6 +14,7 @@ export class SideMenuItemComponent implements OnInit {
   @Input() item: SideMenuItem;
   @Input() depth: number = 0;
 
+  isObservable = isObservable;
   expanded: boolean;
 
   constructor(public sanitizer: DomSanitizer, private router: Router) {}
