@@ -1,17 +1,32 @@
 <div *ngIf="options.header as header" class="header" [ngStyle]="header.background
   && {'background-image': 'url(' + header.background + ')'}">
-  <div *ngIf="(header.profile | async) as profile" class="profile">
-    <img class="picture" [src]="profile.picture">
-    <h2 class="name">{{ profile.name }}</h2>
-    <p *ngIf="profile.email" class="email">{{ profile.email }}</p>
-  </div>
+  <ng-container *ngIf="header.profile as profile">
+    <div *ngIf="isObservable(profile); then asyncProfileTemplate else
+      normalProfileTemplate"></div>
+    <ng-template #asyncProfileTemplate>
+      <ng-container *ngTemplateOutlet="profileTemplate; context: { profile:
+        profile | async }"></ng-container>
+    </ng-template>
+    <ng-template #normalProfileTemplate>
+      <ng-container *ngTemplateOutlet="profileTemplate; context: { profile:
+        profile }"></ng-container>
+    </ng-template>
+    <ng-template #profileTemplate let-profile="profile">
+      <div class="profile">
+        <img class="picture" [src]="profile.picture">
+        <h2 class="name">{{ profile.name }}</h2>
+        <p *ngIf="profile.email" class="email">{{ profile.email }}</p>
+      </div>
+    </ng-template>
+  </ng-container>
 </div>
 
 <ion-list *ngFor="let menu of options.menus" class="content" no-padding
   lines="none">
-  <ng-container *ngIf="menu.can ? (menu.can() | async) : true">
+  <div [hidden]="isObservable(menu.hidden) ? (menu.hidden | async) :
+    menu.hidden">
     <ion-list-header *ngIf="menu.header">{{ menu.header }}</ion-list-header>
     <ion-side-menu-item *ngFor="let item of menu.items" [item]="item"></ion-side-menu-item>
     <hr *ngIf="menu.type === 'divider'" class="divider">
-  </ng-container>
+  </div>
 </ion-list>

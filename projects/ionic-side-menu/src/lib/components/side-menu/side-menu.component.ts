@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, isObservable } from 'rxjs';
 
 export interface SideMenuOptions {
   header?: SideMenuHeader;
@@ -7,7 +7,7 @@ export interface SideMenuOptions {
 }
 export interface SideMenuHeader {
   background?: string;
-  profile?: Observable<SideMenuProfile>;
+  profile?: SideMenuProfile | Observable<SideMenuProfile>;
 }
 export interface SideMenuProfile {
   picture: string;
@@ -18,17 +18,17 @@ export interface SideMenu {
   type?: 'normal' | 'divider';
   header?: string;
   items?: SideMenuItem[];
-  can?: () => Observable<boolean>;
+  hidden?: boolean | Observable<boolean>;
 }
 export interface SideMenuItem {
   icon?: string;
   label: string;
-  badge?: Observable<SideMenuBadge>;
+  badge?: SideMenuBadge | Observable<SideMenuBadge>;
   url?: string;
   children?: SideMenuItem[];
   handler?: () => void;
-  can?: () => Observable<boolean>;
   disabled?: boolean | Observable<boolean>;
+  hidden?: boolean | Observable<boolean>;
 }
 export interface SideMenuBadge {
   text: string;
@@ -42,6 +42,8 @@ export interface SideMenuBadge {
 })
 export class SideMenuComponent implements OnInit {
   @Input() options: SideMenuOptions;
+
+  isObservable = isObservable;
 
   constructor() {}
 

@@ -1,14 +1,12 @@
-<div *ngIf="item.children && item.children.length; then thenBlock else
-  elseBlock"></div>
-<ng-template #thenBlock>
+<div *ngIf="item.children && item.children.length; then parentItemTemplate else
+  normalItemTemplate"></div>
+<ng-template #parentItemTemplate>
   <ion-item [disabled]="isObservable(item.disabled) ? (item.disabled | async) :
-    item.disabled" [style]="sanitizer.bypassSecurityTrustStyle('--padding-start:
-    ' + (depth + 1) * 16 + 'px')" button detail="false"
+    item.disabled" [hidden]="isObservable(item.hidden) ? (item.hidden | async) :
+    item.hidden" [style]="sanitizer.bypassSecurityTrustStyle('--padding-start: '
+    + (depth + 1) * 16 + 'px')" button detail="false"
     (click)="expanded=!expanded">
-    <ion-icon *ngIf="item.icon" slot="start" [name]="item.icon"></ion-icon>
-    <ion-label>{{ item.label }}</ion-label>
-    <ion-badge *ngIf="(item.badge | async) as badge" slot="end"
-      [color]="badge.color && badge.color">{{ badge.text }}</ion-badge>
+    <ng-container *ngTemplateOutlet="itemTemplate; context: { item: item }"></ng-container>
     <ion-icon slot="end" [name]="expanded ? 'arrow-dropup' : 'arrow-dropdown'"></ion-icon>
   </ion-item>
   <ng-container *ngIf="expanded">
@@ -16,19 +14,36 @@
       [depth]="depth + 1"></ion-side-menu-item>
   </ng-container>
 </ng-template>
-<ng-template #elseBlock>
+<ng-template #normalItemTemplate>
   <ion-menu-toggle auto-hide="false">
-    <ion-item *ngIf="item.can ? (item.can() | async) : true"
-      [disabled]="isObservable(item.disabled) ? (item.disabled | async) :
-      item.disabled"
+    <ion-item [disabled]="isObservable(item.disabled) ? (item.disabled | async)
+      : item.disabled" [hidden]="isObservable(item.hidden) ? (item.hidden |
+      async) : item.hidden"
       [style]="sanitizer.bypassSecurityTrustStyle('--padding-start: ' + (depth +
       1) * 16 + 'px')" [routerLink]="item.url ? item.url : []"
       [routerLinkActive]="item.url ? 'active' : []" [routerDirection]="item.url
       && 'root'" (click)="item.handler && item.handler()">
-      <ion-icon *ngIf="item.icon" slot="start" [name]="item.icon"></ion-icon>
-      <ion-label>{{ item.label }}</ion-label>
-      <ion-badge *ngIf="(item.badge | async) as badge" slot="end"
-        [color]="badge.color && badge.color">{{ badge.text }}</ion-badge>
+      <ng-container *ngTemplateOutlet="itemTemplate; context: { item: item }"></ng-container>
     </ion-item>
   </ion-menu-toggle>
+</ng-template>
+<ng-template #itemTemplate let-item="item">
+  <ion-icon *ngIf="item.icon" slot="start" [name]="item.icon"></ion-icon>
+  <ion-label>{{ item.label }}</ion-label>
+  <ng-container *ngIf="item.badge as badge">
+    <div *ngIf="isObservable(badge); then asyncBadgeTemplate else
+      normalBadgeTemplate"></div>
+    <ng-template #asyncBadgeTemplate>
+      <ng-container *ngTemplateOutlet="badgeTemplate; context: { badge: badge |
+        async }"></ng-container>
+    </ng-template>
+    <ng-template #normalBadgeTemplate>
+      <ng-container *ngTemplateOutlet="badgeTemplate; context: { badge: badge
+        }"></ng-container>
+    </ng-template>
+    <ng-template #badgeTemplate let-badge="badge">
+      <ion-badge slot="end" [color]="badge.color && badge.color">{{ badge.text
+        }}</ion-badge>
+    </ng-template>
+  </ng-container>
 </ng-template>
