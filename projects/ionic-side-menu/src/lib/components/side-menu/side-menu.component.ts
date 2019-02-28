@@ -15,9 +15,9 @@ export interface SideMenuProfile {
   email?: string;
 }
 export interface SideMenu {
+  type?: 'normal' | 'divider';
   header?: string;
   items?: SideMenuItem[];
-  divider?: boolean;
   can?: () => Observable<boolean>;
 }
 export interface SideMenuItem {
