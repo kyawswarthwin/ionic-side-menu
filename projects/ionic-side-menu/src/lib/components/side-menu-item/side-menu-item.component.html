@@ -10,7 +10,7 @@
     <ion-icon slot="end" [name]="expanded ? 'arrow-dropup' : 'arrow-dropdown'"></ion-icon>
   </ion-item>
   <ng-container *ngIf="expanded">
-    <ion-side-menu-item *ngFor="let item of item.children" [item]="item"
+    <ion-side-menu-item *ngFor="let child of item.children" [item]="child"
       [depth]="depth + 1"></ion-side-menu-item>
   </ng-container>
 </ng-template>
@@ -42,8 +42,7 @@
         }"></ng-container>
     </ng-template>
     <ng-template #badgeTemplate let-badge="badge">
-      <ion-badge slot="end" [color]="badge.color && badge.color">{{ badge.text
-        }}</ion-badge>
+      <ion-badge slot="end" [color]="badge.color">{{ badge.text }}</ion-badge>
     </ng-template>
   </ng-container>
 </ng-template>
