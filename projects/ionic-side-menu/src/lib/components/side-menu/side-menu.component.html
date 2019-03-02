@@ -17,11 +17,11 @@
         <img class="picture" [src]="profile.picture">
         <h2 class="name">{{ profile.name }}</h2>
         <p *ngIf="profile.email" class="email">{{ profile.email }}</p>
-        <ion-icon *ngIf="header.menus && header.menus.length" [name]="expanded ?
-          'arrow-dropup' : 'arrow-dropdown'"></ion-icon>
       </div>
     </ng-template>
   </ng-container>
+  <ion-icon *ngIf="header.menus && header.menus.length" [name]="expanded ?
+    'arrow-dropup' : 'arrow-dropdown'"></ion-icon>
 </div>
 
 <div *ngIf="expanded; then profileMenuTemplate else normalMenuTemplate"></div>
