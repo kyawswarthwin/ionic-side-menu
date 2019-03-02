@@ -18,7 +18,41 @@ export class AppComponent {
         picture: 'assets/img/avatar.png',
         name: 'John Doe',
         email: 'johndoe@gmail.com'
-      })
+      }),
+      menus: [
+        {
+          items: [
+            {
+              icon: 'person',
+              label: 'Profile',
+              handler: () => {
+                alert('Profile clicked.');
+              }
+            },
+            {
+              icon: 'settings',
+              label: 'Settings',
+              handler: () => {
+                alert('Settings clicked.');
+              }
+            }
+          ]
+        },
+        {
+          type: 'divider'
+        },
+        {
+          items: [
+            {
+              icon: 'exit',
+              label: 'Logout',
+              handler: () => {
+                alert('Logout clicked.');
+              }
+            }
+          ]
+        }
+      ]
     },
     menus: [
       {
@@ -53,21 +87,6 @@ export class AppComponent {
             icon: 'information-circle',
             label: 'About',
             url: '/about'
-          }
-        ]
-      },
-      {
-        type: 'divider'
-      },
-      {
-        header: 'Account',
-        items: [
-          {
-            icon: 'exit',
-            label: 'Logout',
-            handler: () => {
-              alert('logout clicked');
-            }
           }
         ]
       }

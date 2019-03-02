@@ -1,5 +1,6 @@
-<div *ngIf="options.header as header" class="header" [ngStyle]="header.background
-  && {'background-image': 'url(' + header.background + ')'}">
+<div *ngIf="options.header as header" class="header"
+  [ngStyle]="setHeaderStyle(header)" (click)="header.menus &&
+  header.menus.length && expanded=!expanded">
   <ng-container *ngIf="header.profile as profile">
     <div *ngIf="isObservable(profile); then asyncProfileTemplate else
       normalProfileTemplate"></div>
@@ -16,17 +17,30 @@
         <img class="picture" [src]="profile.picture">
         <h2 class="name">{{ profile.name }}</h2>
         <p *ngIf="profile.email" class="email">{{ profile.email }}</p>
+        <ion-icon *ngIf="header.menus && header.menus.length" [name]="expanded ?
+          'arrow-dropup' : 'arrow-dropdown'"></ion-icon>
       </div>
     </ng-template>
   </ng-container>
 </div>
 
-<ion-list *ngFor="let menu of options.menus" class="content" no-padding
-  lines="none">
-  <div [hidden]="isObservable(menu.hidden) ? (menu.hidden | async) :
-    menu.hidden">
-    <ion-list-header *ngIf="menu.header">{{ menu.header }}</ion-list-header>
-    <ion-side-menu-item *ngFor="let item of menu.items" [item]="item"></ion-side-menu-item>
-    <hr *ngIf="menu.type === 'divider'" class="divider">
-  </div>
-</ion-list>
+<div *ngIf="expanded; then profileMenuTemplate else normalMenuTemplate"></div>
+<ng-template #profileMenuTemplate>
+  <ng-container *ngTemplateOutlet="menuTemplate; context: { menus:
+    options.header.menus }"></ng-container>
+</ng-template>
+<ng-template #normalMenuTemplate>
+  <ng-container *ngTemplateOutlet="menuTemplate; context: { menus: options.menus
+    }"></ng-container>
+</ng-template>
+<ng-template #menuTemplate let-menus="menus">
+  <ion-list *ngFor="let menu of menus" class="content" no-padding lines="none">
+    <div [hidden]="isObservable(menu.hidden) ? (menu.hidden | async) :
+      menu.hidden">
+      <ion-list-header *ngIf="menu.header">{{ menu.header }}</ion-list-header>
+      <ion-side-menu-item *ngFor="let item of menu.items" [item]="item"
+        (click)="expanded=false"></ion-side-menu-item>
+      <hr *ngIf="menu.type === 'divider'" class="divider">
+    </div>
+  </ion-list>
+</ng-template>

@@ -19,11 +19,30 @@
          * @return {?}
          */
             function () { };
+        /**
+         * @param {?} header
+         * @return {?}
+         */
+        SideMenuComponent.prototype.setHeaderStyle = /**
+         * @param {?} header
+         * @return {?}
+         */
+            function (header) {
+                /** @type {?} */
+                var style = {};
+                if (header.background) {
+                    style['background-image'] = "url(" + header.background + ")";
+                }
+                if (header.menus && header.menus.length) {
+                    style['cursor'] = 'pointer';
+                }
+                return style;
+            };
         SideMenuComponent.decorators = [
             { type: core.Component, args: [{
                         selector: 'ion-side-menu',
-                        template: "<div *ngIf=\"options.header as header\" class=\"header\" [ngStyle]=\"header.background\r\n  && {'background-image': 'url(' + header.background + ')'}\">\r\n  <ng-container *ngIf=\"header.profile as profile\">\r\n    <div *ngIf=\"isObservable(profile); then asyncProfileTemplate else\r\n      normalProfileTemplate\"></div>\r\n    <ng-template #asyncProfileTemplate>\r\n      <ng-container *ngTemplateOutlet=\"profileTemplate; context: { profile:\r\n        profile | async }\"></ng-container>\r\n    </ng-template>\r\n    <ng-template #normalProfileTemplate>\r\n      <ng-container *ngTemplateOutlet=\"profileTemplate; context: { profile:\r\n        profile }\"></ng-container>\r\n    </ng-template>\r\n    <ng-template #profileTemplate let-profile=\"profile\">\r\n      <div class=\"profile\">\r\n        <img class=\"picture\" [src]=\"profile.picture\">\r\n        <h2 class=\"name\">{{ profile.name }}</h2>\r\n        <p *ngIf=\"profile.email\" class=\"email\">{{ profile.email }}</p>\r\n      </div>\r\n    </ng-template>\r\n  </ng-container>\r\n</div>\r\n\r\n<ion-list *ngFor=\"let menu of options.menus\" class=\"content\" no-padding\r\n  lines=\"none\">\r\n  <div [hidden]=\"isObservable(menu.hidden) ? (menu.hidden | async) :\r\n    menu.hidden\">\r\n    <ion-list-header *ngIf=\"menu.header\">{{ menu.header }}</ion-list-header>\r\n    <ion-side-menu-item *ngFor=\"let item of menu.items\" [item]=\"item\"></ion-side-menu-item>\r\n    <hr *ngIf=\"menu.type === 'divider'\" class=\"divider\">\r\n  </div>\r\n</ion-list>\r\n",
-                        styles: [".header{background:var(--ion-side-menu-header-background,var(--ion-text-color,#000));background-repeat:no-repeat;background-position:center;background-size:cover;color:var(--ion-side-menu-header-color,var(--ion-background-color,#fff));height:160px;margin-bottom:8px;border-bottom:1px solid var(--ion-item-border-color,var(--ion-border-color,var(--ion-color-step-150,rgba(0,0,0,.13))));padding:16px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.header .profile .picture{width:64px;height:64px;border-radius:50%}.header .profile .email,.header .profile .name{margin:0;font-size:14px;line-height:24px}.header .profile .name{margin-top:16px;font-weight:500}.header .profile .email{font-weight:400}.content ion-list-header{margin-top:-8px;color:var(--ion-color-step-400,#999)}.content .divider{border-bottom:1px solid var(--ion-item-border-color,var(--ion-border-color,var(--ion-color-step-150,rgba(0,0,0,.13))))}"]
+                        template: "<div *ngIf=\"options.header as header\" class=\"header\"\r\n  [ngStyle]=\"setHeaderStyle(header)\" (click)=\"header.menus &&\r\n  header.menus.length && expanded=!expanded\">\r\n  <ng-container *ngIf=\"header.profile as profile\">\r\n    <div *ngIf=\"isObservable(profile); then asyncProfileTemplate else\r\n      normalProfileTemplate\"></div>\r\n    <ng-template #asyncProfileTemplate>\r\n      <ng-container *ngTemplateOutlet=\"profileTemplate; context: { profile:\r\n        profile | async }\"></ng-container>\r\n    </ng-template>\r\n    <ng-template #normalProfileTemplate>\r\n      <ng-container *ngTemplateOutlet=\"profileTemplate; context: { profile:\r\n        profile }\"></ng-container>\r\n    </ng-template>\r\n    <ng-template #profileTemplate let-profile=\"profile\">\r\n      <div class=\"profile\">\r\n        <img class=\"picture\" [src]=\"profile.picture\">\r\n        <h2 class=\"name\">{{ profile.name }}</h2>\r\n        <p *ngIf=\"profile.email\" class=\"email\">{{ profile.email }}</p>\r\n        <ion-icon *ngIf=\"header.menus && header.menus.length\" [name]=\"expanded ?\r\n          'arrow-dropup' : 'arrow-dropdown'\"></ion-icon>\r\n      </div>\r\n    </ng-template>\r\n  </ng-container>\r\n</div>\r\n\r\n<div *ngIf=\"expanded; then profileMenuTemplate else normalMenuTemplate\"></div>\r\n<ng-template #profileMenuTemplate>\r\n  <ng-container *ngTemplateOutlet=\"menuTemplate; context: { menus:\r\n    options.header.menus }\"></ng-container>\r\n</ng-template>\r\n<ng-template #normalMenuTemplate>\r\n  <ng-container *ngTemplateOutlet=\"menuTemplate; context: { menus: options.menus\r\n    }\"></ng-container>\r\n</ng-template>\r\n<ng-template #menuTemplate let-menus=\"menus\">\r\n  <ion-list *ngFor=\"let menu of menus\" class=\"content\" no-padding lines=\"none\">\r\n    <div [hidden]=\"isObservable(menu.hidden) ? (menu.hidden | async) :\r\n      menu.hidden\">\r\n      <ion-list-header *ngIf=\"menu.header\">{{ menu.header }}</ion-list-header>\r\n      <ion-side-menu-item *ngFor=\"let item of menu.items\" [item]=\"item\"\r\n        (click)=\"expanded=false\"></ion-side-menu-item>\r\n      <hr *ngIf=\"menu.type === 'divider'\" class=\"divider\">\r\n    </div>\r\n  </ion-list>\r\n</ng-template>\r\n",
+                        styles: [".header{height:160px;border-bottom:1px solid var(--ion-item-border-color,var(--ion-border-color,var(--ion-color-step-150,rgba(0,0,0,.13))));padding:16px;margin-bottom:8px;background:var(--ion-side-menu-header-background,var(--ion-text-color,#000));background-repeat:no-repeat;background-position:center;background-size:cover;color:var(--ion-side-menu-header-color,var(--ion-background-color,#fff));-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.header .profile{position:relative;height:128px}.header .profile .picture{width:64px;height:64px;border-radius:50%}.header .profile .email,.header .profile .name{margin:0;font-size:14px;line-height:24px}.header .profile .name{margin-top:16px;font-weight:500}.header .profile .email{font-weight:400}.header .profile ion-icon{position:absolute;right:0;bottom:0;font-size:24px}.content ion-list-header{margin-top:-8px;color:var(--ion-color-step-400,#999)}.content .divider{border-bottom:1px solid var(--ion-item-border-color,var(--ion-border-color,var(--ion-color-step-150,rgba(0,0,0,.13))))}"]
                     }] }
         ];
         /** @nocollapse */
@@ -154,44 +173,46 @@
          * @return {?}
          */
             function () {
-                var _this = this;
-                this.router.events.subscribe(function (event) {
-                    return __awaiter(_this, void 0, void 0, function () {
-                        var disabled, _a, hidden, _b;
-                        return __generator(this, function (_c) {
-                            switch (_c.label) {
-                                case 0:
-                                    if (!(event instanceof router.NavigationEnd))
-                                        return [3 /*break*/, 7];
-                                    if (!rxjs.isObservable(this.item.disabled))
-                                        return [3 /*break*/, 2];
-                                    return [4 /*yield*/, this.item.disabled.toPromise()];
-                                case 1:
-                                    _a = _c.sent();
-                                    return [3 /*break*/, 3];
-                                case 2:
-                                    _a = this.item.disabled;
-                                    _c.label = 3;
-                                case 3:
-                                    disabled = _a;
-                                    if (!rxjs.isObservable(this.item.hidden))
-                                        return [3 /*break*/, 5];
-                                    return [4 /*yield*/, this.item.hidden.toPromise()];
-                                case 4:
-                                    _b = _c.sent();
-                                    return [3 /*break*/, 6];
-                                case 5:
-                                    _b = this.item.hidden;
-                                    _c.label = 6;
-                                case 6:
-                                    hidden = _b;
-                                    if (event.urlAfterRedirects.startsWith(this.item.url) && !disabled && !hidden) {
-                                        this.expanded = true;
+                return __awaiter(this, void 0, void 0, function () {
+                    var disabled, _a, hidden, _b;
+                    var _this = this;
+                    return __generator(this, function (_c) {
+                        switch (_c.label) {
+                            case 0:
+                                if (!rxjs.isObservable(this.item.disabled))
+                                    return [3 /*break*/, 2];
+                                return [4 /*yield*/, this.item.disabled.toPromise()];
+                            case 1:
+                                _a = _c.sent();
+                                return [3 /*break*/, 3];
+                            case 2:
+                                _a = this.item.disabled;
+                                _c.label = 3;
+                            case 3:
+                                disabled = _a;
+                                if (!rxjs.isObservable(this.item.hidden))
+                                    return [3 /*break*/, 5];
+                                return [4 /*yield*/, this.item.hidden.toPromise()];
+                            case 4:
+                                _b = _c.sent();
+                                return [3 /*break*/, 6];
+                            case 5:
+                                _b = this.item.hidden;
+                                _c.label = 6;
+                            case 6:
+                                hidden = _b;
+                                this.router.events.subscribe(function (event) {
+                                    if (event instanceof router.NavigationEnd) {
+                                        if (event.urlAfterRedirects.startsWith(_this.item.url) && !disabled && !hidden) {
+                                            _this.expanded = true;
+                                        }
                                     }
-                                    _c.label = 7;
-                                case 7: return [2 /*return*/];
-                            }
-                        });
+                                });
+                                if (this.router.url.startsWith(this.item.url) && !disabled && !hidden) {
+                                    this.expanded = true;
+                                }
+                                return [2 /*return*/];
+                        }
                     });
                 });
             };

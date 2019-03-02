@@ -1,19 +1,21 @@
 .header {
-  background: var(--ion-side-menu-header-background, var(--ion-text-color, #000));
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  color: var(--ion-side-menu-header-color, var(--ion-background-color, #fff));
   height: 160px;
-  margin-bottom: 8px;
   border-bottom: 1px solid
     var(
       --ion-item-border-color,
       var(--ion-border-color, var(--ion-color-step-150, rgba(0, 0, 0, 0.13)))
     );
   padding: 16px;
+  margin-bottom: 8px;
+  background: var(--ion-side-menu-header-background, var(--ion-text-color, #000));
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: var(--ion-side-menu-header-color, var(--ion-background-color, #fff));
   user-select: none;
   .profile {
+    position: relative;
+    height: 128px;
     .picture {
       width: 64px;
       height: 64px;
@@ -31,6 +33,12 @@
     }
     .email {
       font-weight: 400;
+    }
+    ion-icon {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      font-size: 24px;
     }
   }
 }

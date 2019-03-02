@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { isObservable } from 'rxjs';
 
-import { SideMenuOptions } from '../../shared/models/side-menu.model';
+import { SideMenuOptions, SideMenuHeader } from '../../shared/models/side-menu.model';
 
 @Component({
   selector: 'ion-side-menu',
@@ -12,8 +12,20 @@ export class SideMenuComponent implements OnInit {
   @Input() options: SideMenuOptions;
 
   isObservable = isObservable;
+  expanded: boolean;
 
   constructor() {}
 
   ngOnInit() {}
+
+  setHeaderStyle(header: SideMenuHeader) {
+    const style = {};
+    if (header.background) {
+      style['background-image'] = `url(${header.background})`;
+    }
+    if (header.menus && header.menus.length) {
+      style['cursor'] = 'pointer';
+    }
+    return style;
+  }
 }

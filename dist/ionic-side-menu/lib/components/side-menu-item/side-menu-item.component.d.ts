@@ -11,5 +11,5 @@ export declare class SideMenuItemComponent implements OnInit {
     isObservable: typeof isObservable;
     expanded: boolean;
     constructor(sanitizer: DomSanitizer, router: Router);
-    ngOnInit(): void;
+    ngOnInit(): Promise<void>;
 }

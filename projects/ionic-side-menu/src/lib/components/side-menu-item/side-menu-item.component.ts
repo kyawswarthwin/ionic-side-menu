@@ -19,19 +19,24 @@ export class SideMenuItemComponent implements OnInit {
 
   constructor(public sanitizer: DomSanitizer, private router: Router) {}
 
-  ngOnInit() {
-    this.router.events.subscribe(async event => {
+  async ngOnInit() {
+    const disabled = isObservable(this.item.disabled)
+      ? await this.item.disabled.toPromise()
+      : this.item.disabled;
+    const hidden = isObservable(this.item.hidden)
+      ? await this.item.hidden.toPromise()
+      : this.item.hidden;
+
+    this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        const disabled = isObservable(this.item.disabled)
-          ? await this.item.disabled.toPromise()
-          : this.item.disabled;
-        const hidden = isObservable(this.item.hidden)
-          ? await this.item.hidden.toPromise()
-          : this.item.hidden;
         if (event.urlAfterRedirects.startsWith(this.item.url) && !disabled && !hidden) {
           this.expanded = true;
         }
       }
     });
+
+    if (this.router.url.startsWith(this.item.url) && !disabled && !hidden) {
+      this.expanded = true;
+    }
   }
 }
