@@ -7,8 +7,8 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { SideMenuItemComponent } from './components/side-menu-item/side-menu-item.component';
 
 @NgModule({
-  declarations: [SideMenuComponent, SideMenuItemComponent],
   imports: [CommonModule, IonicModule, RouterModule],
+  declarations: [SideMenuComponent, SideMenuItemComponent],
   exports: [SideMenuComponent]
 })
 export class IonicSideMenuModule {}

@@ -3,7 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Router, NavigationEnd } from '@angular/router';
 import { isObservable } from 'rxjs';
 
-import { SideMenuItem } from '../side-menu/side-menu.component';
+import { SideMenuItem } from '../../shared/models/side-menu.model';
 
 @Component({
   selector: 'ion-side-menu-item',
