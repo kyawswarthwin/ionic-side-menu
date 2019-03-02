@@ -1,11 +1,11 @@
 <div *ngIf="item.children && item.children.length; then parentItemTemplate else
   normalItemTemplate"></div>
 <ng-template #parentItemTemplate>
-  <ion-item [disabled]="isObservable(item.disabled) ? (item.disabled | async) :
+  <ion-item [style]="sanitizer.bypassSecurityTrustStyle('--padding-start: ' +
+    (depth + 1) * 16 + 'px')" button detail="false" (click)="expanded=!expanded"
+    [disabled]="isObservable(item.disabled) ? (item.disabled | async) :
     item.disabled" [hidden]="isObservable(item.hidden) ? (item.hidden | async) :
-    item.hidden" [style]="sanitizer.bypassSecurityTrustStyle('--padding-start: '
-    + (depth + 1) * 16 + 'px')" button detail="false"
-    (click)="expanded=!expanded">
+    item.hidden">
     <ng-container *ngTemplateOutlet="itemTemplate; context: { item: item }"></ng-container>
     <ion-icon slot="end" [name]="expanded ? 'arrow-dropup' : 'arrow-dropdown'"></ion-icon>
   </ion-item>
@@ -16,13 +16,13 @@
 </ng-template>
 <ng-template #normalItemTemplate>
   <ion-menu-toggle auto-hide="false">
-    <ion-item [disabled]="isObservable(item.disabled) ? (item.disabled | async)
-      : item.disabled" [hidden]="isObservable(item.hidden) ? (item.hidden |
-      async) : item.hidden"
-      [style]="sanitizer.bypassSecurityTrustStyle('--padding-start: ' + (depth +
-      1) * 16 + 'px')" [routerLink]="item.url ? item.url : []"
+    <ion-item [style]="sanitizer.bypassSecurityTrustStyle('--padding-start: ' +
+      (depth + 1) * 16 + 'px')" [routerLink]="item.url ? item.url : []"
       [routerLinkActive]="item.url ? 'active' : []" [routerDirection]="item.url
-      && 'root'" (click)="item.handler && item.handler()">
+      && 'root'" (click)="item.handler && item.handler()"
+      [disabled]="isObservable(item.disabled) ? (item.disabled | async) :
+      item.disabled" [hidden]="isObservable(item.hidden) ? (item.hidden | async)
+      : item.hidden">
       <ng-container *ngTemplateOutlet="itemTemplate; context: { item: item }"></ng-container>
     </ion-item>
   </ion-menu-toggle>
